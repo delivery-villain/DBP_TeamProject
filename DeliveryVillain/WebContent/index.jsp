@@ -18,7 +18,9 @@
           />
         </h1>
       </div>
-      <div id = "search"></div>
     </header>
+    <div id = "search" class = "search">
+      
+    </div>
 </body>
 </html>

@@ -21,10 +21,10 @@
 }
 
 .search {
-	height: 150px;
     padding: 125px 100px 70px 100px;
-    background-image: url(./bgImg.gif);
+    background-image: url(../bgImg.png);
     background-color: #3b2114;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
