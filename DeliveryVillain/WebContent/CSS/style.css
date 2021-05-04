@@ -1,0 +1,30 @@
+/* HEADER */
+.header {
+  background: #fa0050;
+  height: 90px;
+}
+.logo {
+  position: absolute;
+  top: 0;
+  margin: 0;
+  padding: 10px 0 0 20px;
+}
+.logo-img {
+  width: 150px;
+  height: auto;
+}
+
+.container,
+{
+  margin: 0;
+  position: relative;
+}
+
+.search {
+	height: 150px;
+    padding: 125px 100px 70px 100px;
+    background-image: url(./bgImg.gif);
+    background-color: #3b2114;
+    background-repeat: no-repeat;
+    background-position: center;
+}
