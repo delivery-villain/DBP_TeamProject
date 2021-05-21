@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+	pageEncoding="EUC-KR" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,6 +13,20 @@
 		<h1 class="logo">
 			<img class="logo-img" src="logo.png" alt="logo" />
 		</h1>
+		<div class="nav-top clearfix" ng-hide="$location.path() == '/login/' &amp;&amp; is_mobile_device">
+        <div id="cart" class="pull-right">
+          <span class="gps-status ng-binding" ng-show="check_show_location_button()" ng-click="toggle_location_block()" ng-bind="current_location">위치 알 수 없음</span>
+          <a class="visible-xs" ng-show="check_show_location_button()" ng-click="toggle_location_block()">
+           <span class="ico-set-pic"></span>
+         </a>
+         <a id="button-cart" href="" class="visible-xs ng-hide" ng-click="click_cart_button()" ng-show="check_show_cart_button()">
+           <span class="ico-cart"></span>
+           <span class="badge ng-binding" ng-bind="global_cart.get_amount()">0</span>
+         </a>
+         <button type="button" class="btn btn-login ng-binding" onclick = "location.href = 'login.jsp'" ng-click="login()" ng-bind-html="check_login() ? '로그아웃' : '로그인'" ng-show="is_yogiyo &amp;&amp; !session_storage.oauth_next">로그인</button>
+         <button type="button" class="btn btn-warning hidden-xs ng-binding ng-hide" ng-show="show_pc_cart_button()" ng-click="click_cart_button()" ng-bind="&quot;주문표(&quot; + global_cart.get_amount() + &quot;)&quot;">주문표(0)</button>
+         </div>
+       </div>
 	</div>
 	</header>
 	<div id="search" class="search">
