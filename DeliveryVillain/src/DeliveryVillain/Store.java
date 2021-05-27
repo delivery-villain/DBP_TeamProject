@@ -5,6 +5,18 @@ public class Store {
 	private String sphonenumber;
 	private String sname;
 	
+	public Store(int sno, String sphonenumber, String sname) {
+		this.sno = sno;
+		this.sphonenumber = sphonenumber;
+		this.sname = sname;
+	}
+	
+	public Store() {
+		this.sno = 0;
+		this.sphonenumber = null;
+		this.sname = null;
+	}
+	
 	public String getPhoneNumber() {
 		return this.sphonenumber;
 	}

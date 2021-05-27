@@ -6,11 +6,13 @@ public class UserDAO {
 	
 	private static Connection con = null;
 	private static PreparedStatement prstmt = null;
+	private static PreparedStatement prstmt2 = null;
 	private static Statement stmt         = null;
 	private static ResultSet rs = null;
+	private static ResultSet rs2 = null;
 	
 	static String driver= "com.mysql.jdbc.Driver";
-    static String URL = "jdbc:mysql://localhost:3306/DeliveryVillain";
+    static String URL = "jdbc:mysql://localhost:3306/DeliveryVillain?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false";
     
     public static void loadConnect()  {
 	   		try {
@@ -69,14 +71,22 @@ public class UserDAO {
  		
     }
     
-    public static int login(String userID, String userPassword){
+    public static int login(User user){
+    	loadConnect();
     	String sql = "select password from User where id = ?";
+    	String sql2 = "select userType from User where id = ?";
     	try {
     		prstmt = con.prepareStatement(sql);
-    		prstmt.setString(1, userID);
+    		prstmt.setString(1, user.getID());
+    		prstmt2 = con.prepareStatement(sql2);
+    		prstmt2.setString(1, user.getID());
+    		rs2 = prstmt2.executeQuery();
     		rs = prstmt.executeQuery();
     		if (rs.next()) {
-    			if(rs.getString(1).equals(userPassword)) {
+    			if(rs.getString(1).equals(user.getPassword())) {
+    				if (rs2.next()) {
+    					user.setUserType(rs2.getBoolean(1));
+    				}
     				return 1;
     			}
     			else

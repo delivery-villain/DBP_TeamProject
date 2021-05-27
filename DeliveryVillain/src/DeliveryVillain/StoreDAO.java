@@ -1,14 +1,20 @@
 package DeliveryVillain;
- 
-import java.sql.*;
 
-public class DB {
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class StoreDAO {
+
+	private static Connection con = null;
+	private static PreparedStatement prstmt = null;
+	private static Statement stmt         = null;
+	private static ResultSet rs = null;
 	
-	static  Connection con         = null;
-    static  Statement stmt         = null;
-    static  ResultSet rs           = null ;
-    
-    static String driver= "com.mysql.jdbc.Driver";
+	static String driver= "com.mysql.jdbc.Driver";
     static String URL = "jdbc:mysql://localhost:3306/DeliveryVillain?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false";
     
     public static void loadConnect()  {
@@ -44,6 +50,21 @@ public class DB {
 	 	}
     }
     
+    public static int updateQuery(String sql) { 
+  	   int count;
+  	   
+  	   try {
+  		   // Statement 생성 
+  		   stmt = con.createStatement();
+  		   count = stmt.executeUpdate(sql);  
+  		   return count;
+
+  	   } catch( SQLException ex ) 	    {
+  		   System.err.println("** SQL exec error in updateQuery() : " + ex.getMessage() );
+  		   return 0;
+  	   }	
+     }
+    
     public static void disconnect()  {
  	   try {
  		   	// 연결을 닫는다.
@@ -68,70 +89,53 @@ public class DB {
  		
     }
     
-    // 주어진 업데이트 관련 질의를 수행하여  update count 반환
-    public static int updateQuery(String sql) { 
- 	   int count;
- 	   
- 	   try {
- 		   // Statement 생성 
- 		   stmt = con.createStatement();
- 		   count = stmt.executeUpdate(sql);  
- 		   return count;
-
- 	   } catch( SQLException ex ) 	    {
- 		   System.err.println("** SQL exec error in updateQuery() : " + ex.getMessage() );
- 		   return 0;
- 	   }	
-    }
-    
-    // 모든 가게정보 검색
-    public static ResultSet selectAllStore() {
-  	   String sql = "select * from store;";
-  	   System.out.println("   >> SQL : " + sql + "\n");
-
-  	   return selectQuery(sql);
-     }
-    
-    // 모든 유저정보 검색
-    public static ResultSet selectAllUser() {
-  	   String sql = "select * from User;";
-  	   System.out.println("   >> SQL : " + sql + "\n");
-
-  	   return selectQuery(sql);
-     }
-    
-    public static int signIn(String userName, String userID, String userPassword, String userPhoneNumber, boolean userType ) {
-    	String sql = "insert into User values ("+ userName +", " + userID + ", " + userPassword + ", " + userPhoneNumber +", "+ userType + ")";
-    	updateQuery(sql);
-    	return 0;	
-    }
-    
-    public static int insertUser(User user) {
+   
+    public static int addStore(Store store, String userID) {
 		int updateCnt = 0;
 
 		try {                      
 			// SQL 질의문을 수행한다.
-			String sql = "insert into User values (?, ?, ?, ?, ?)";
+			String sql = "insert into store values (?, ?, ?, ?)";
 			
 			PreparedStatement prStmt = con.prepareStatement(sql);
 
-			prStmt.setString(1, user.getName());
-			prStmt.setString(2, user.getID());
-			prStmt.setString(3, user.getPassword());
-			prStmt.setString(4, user.getPhoneNumber());
-			prStmt.setBoolean(5, user.isUserType());
+			prStmt.setInt(1, store.getsno());
+			prStmt.setString(2, store.getName());
+			prStmt.setString(3, userID);
+			prStmt.setString(4, store.getPhoneNumber());
 			
 			updateCnt = prStmt.executeUpdate();  		
 		} catch( SQLException ex ) {
 
-			System.err.println("\n  ??? SQL exec error in insertUser(): " + ex.getMessage() );
+			System.err.println("\n  ??? SQL exec error in insertStore(): " + ex.getMessage() );
 		}
 
 		return updateCnt;
 	}
-    
-    
-    
-    
+    public static int setStoreInfo(User user, Store store){
+    	loadConnect();
+    	String sql = "select * from store where id = ?";
+    	
+    	try {
+    		prstmt = con.prepareStatement(sql);
+    		prstmt.setString(1, user.getID());
+    		rs = prstmt.executeQuery();
+    		if (rs.next()) {
+    			
+    			
+    			store.setsno(rs.getInt(1));
+    			store.setName(rs.getString(2));
+    			store.setPhoneNumber(rs.getString(4));
+    			
+    			
+    			return 0;
+    		}
+    		return -1;
+    		
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
+    	return -2;
+    }
     
 }

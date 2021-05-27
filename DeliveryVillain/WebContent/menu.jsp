@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%request.setCharacterEncoding("UTF-8"); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,30 +8,30 @@
 <link rel="stylesheet" href="CSS/headerStyle.css">
 </head>
 <body>
-	<header class="header">
+<header class="header">
 	<div class="container">
 		<h1 class="logo">
 			<img class="logo-img" src="logo.png" alt="logo" />
 		</h1>
 	</div>
 	</header>
-	<div class = "login_container">
+	<div class = "order_container">
 		<center>
-			<form method = "post" action = "loginAction.jsp">
+			<form method = "post" action = "menuAction.jsp">
 				<div class="form-group">
-					<input type = "text" class="form-control" placeholder ="아이디" name="userID" maxlength="20">	
+					<input type = "text" class="form-control" placeholder ="가게 번호" name="storeNum" maxlength="20">
+							
 				</div>
+				<input type = "text" class="form-control" placeholder ="메뉴이름" name="menuName" maxlength="20">
 				<div class="form-group">
-					<input type = "text" class="form-control" placeholder ="비밀번호" name="userPassword" maxlength="20">	
+					<input type = "text" class="form-control" placeholder ="가격" name="price" maxlength="20">	
 				</div>
-				<input type = "submit" class = "btn-primary" value ="로그인">
+				<input type = "submit" class = "btn-primary" value ="메뉴등록">
 			</form>
-			<form action="signin.jsp">
-				<input type = "submit" value ="회원가입">
-			</form>
+		
+			
 		</center>
 	</div>
-	
-	
+		
 </body>
 </html>

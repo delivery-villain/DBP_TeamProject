@@ -9,30 +9,32 @@
 <link rel="stylesheet" href="CSS/headerStyle.css">
 </head>
 <body>
-	<header class="header">
+<header class="header">
 	<div class="container">
 		<h1 class="logo">
 			<img class="logo-img" src="logo.png" alt="logo" />
 		</h1>
 	</div>
 	</header>
-	<div class = "login_container">
+	<div class = "order_container">
 		<center>
 			<form method = "post" action = "loginAction.jsp">
 				<div class="form-group">
-					<input type = "text" class="form-control" placeholder ="아이디" name="userID" maxlength="20">	
+				주소 <br>
+					<input type = "text" class="form-control" placeholder ="(필수)주소를 입력하세요" name="address" maxlength="255">
+							
 				</div>
+				
+				<input type = "text" class="form-control" placeholder ="(필수)상세주소를 입력하세요" name="address2" maxlength="255">
 				<div class="form-group">
-					<input type = "text" class="form-control" placeholder ="비밀번호" name="userPassword" maxlength="20">	
+				주문시 요청사항 <br>
+					<input type = "text" class="form-control" placeholder ="요청사항을 남겨주세요" name="request" maxlength="255">	
 				</div>
-				<input type = "submit" class = "btn-primary" value ="로그인">
+				<input type = "submit" class = "btn-primary" value ="결제하기">
 			</form>
-			<form action="signin.jsp">
-				<input type = "submit" value ="회원가입">
-			</form>
+			
 		</center>
 	</div>
-	
-	
+		
 </body>
 </html>

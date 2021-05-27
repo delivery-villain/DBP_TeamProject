@@ -1,10 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%request.setCharacterEncoding("UTF-8"); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>¿ä±â¿ä</title>
+<title>ìš”ê¸°ìš”</title>
 <link rel="stylesheet" href="CSS/headerStyle.css">
 </head>
 <body>
@@ -22,19 +23,19 @@
 		</div>
 			<input type = "text" class="form-control" placeholder ="password" name="userPassword" maxlength="20">	
 		<div class="form-group"> 
-			<input type = "text" class="form-control" placeholder ="password È®ÀÎ" name="userPassword" maxlength="20">	
+			<input type = "text" class="form-control" placeholder ="password í™•ì¸" name="userPassword" maxlength="20">	
 		</div>
 		<div class="form-group"> 
-			<input type = "text" class="form-control" placeholder ="ÀÌ¸§" name="userName" maxlength="20">
+			<input type = "text" class="form-control" placeholder ="ì´ë¦„" name="userName" maxlength="20">
 		</div>
 		<div class="form-group"> 
-			<input type = "text" class="form-control" placeholder ="ÀüÈ­¹øÈ£" name="userPhoneNumber" maxlength="20">	
+			<input type = "text" class="form-control" placeholder ="ì „í™”ë²ˆí˜¸" name="userPhoneNumber" maxlength="20">	
 		</div>
 		
-		<label>°¡°Ô»çÀå´Ô <input type = "checkbox" name = "userType" checked = "checked"></label>
+		<label>ê°€ê²Œì‚¬ìž¥ë‹˜ <input type = "checkbox" name = "userType"  value = "true"></label>
 		
 		<div class="form-group"> 
-			<input type = "submit" value = "È¸¿ø°¡ÀÔ" >
+			<input type = "submit" value = "íšŒì›ê°€ìž…" >
 		</div>
 		
 	</form>

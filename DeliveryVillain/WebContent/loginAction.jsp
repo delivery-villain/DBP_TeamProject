@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"
     import="java.sql.*, java.util.*, DeliveryVillain.*, java.io.PrintWriter" %>
     
     <% request.setCharacterEncoding("UTF-8");   
@@ -8,11 +8,12 @@
     
     User user = new User(userID, userPassword);
     %>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>¿ä±â¿ä</title>
+<title>ìš”ê¸°ìš”</title>
 <link rel="stylesheet" href="CSS/headerStyle.css">
 </head>
 <body>
@@ -26,35 +27,38 @@
 	
 	<%
 	
-		int result = UserDAO.login(user.getID(), user.getPassword());
+		int result = UserDAO.login(user);
 		if (result == 1) {
-			PrintWriter script = response.getWriter();
-			script.println("<script>");
-			script.println("location.href = 'index.jsp'");
-			script.println("</script>");
+			session.setAttribute("user", user);
+			if (user.isUserType() == true) {
+				response.sendRedirect("indexForSeller.jsp");
+			}
+			else {
+				response.sendRedirect("index.jsp");
+			}
+			
 		}
 		else if (result == 0) {
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
-			script.println("alert('ºñ¹Ğ¹øÈ£°¡ Æ²¸³´Ï´Ù.')");
+			script.println("alert('ë¹„ë°€ë²ˆí˜¸ê°€ í‹€ë¦½ë‹ˆë‹¤.')");
 			script.println("history.back()");
 			script.println("</script>");
 		}
 		else if (result == -1) {
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
-			script.println("alert('Á¸ÀçÇÏÁö ¾Ê´Â ¾ÆÀÌµğÀÔ´Ï´Ù.')");
+			script.println("alert('ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ì•„ì´ë””ì…ë‹ˆë‹¤.')");
 			script.println("history.back()");
 			script.println("</script>");
 		}
 		else if (result == -2) {
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
-			script.println("alert('µ¥ÀÌÅÍº£ÀÌ½º ¿À·ù°¡ ¹ß»ıÇß½À´Ï´Ù.')");
+			script.println("alert('ë°ì´í„°ë² ì´ìŠ¤ ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.')");
 			script.println("history.back()");
 			script.println("</script>");
 		}
-		
 	%>
 </body>
 </html>
