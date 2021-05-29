@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<HTML>
+<HEAD>
+<title> 가게페이지 - 요기요</title>
+    <style type="text/css">
+        h1 {
+            color: white;
+            Background-color: #f41458;  <!-- 요기요 분홍색 코드값-->
+            <!-- font-family:"여기어때 잘난체"; -->
+        }
+    </style>
+</HEAD>
+<BODY>
+    <h1><img src="요기요 로고 사진.PNG" width="220" height="120" /></h1>
+    <p style="text-align:center">[치킨집]_(가게이름예시)</p>
+    <table border="1" width="1000" height="100"; style="margin-left: auto; margin-right: auto;">
+        <thead>
+        <th><input type="button" value="메뉴" /></th>
+        <th><input type="button" value="리뷰" /></th>
+        <th><input type="button" value="정보" /></th>
+        </thead>
+    </table>
+    <br/>
+    <table border="2" width="1000" height="100"; style="margin-left: auto; margin-right: auto;">
+        <tr>
+            <td onClick="location.href='링크입력'" style="font-size: 30px">후라이드 치킨
+            <img src="치킨사진.gif" style="float: right; width="100"; height="100"; object-fit: cover;" />  
+            <p style="font-size: 10px">담백한 맛을 느끼게 해주는 맛!</p>
+            <p style="font-size: 20px">15000원</p> </td>
+        </tr>
+        <tr>
+            <td onClick="location.href='링크입력'">양념 치킨<br/> <p style="font-size: 10px"> 달콤한 양념을 즐기는 맛! </p> <br /> 16000원 </td>
+        </tr>
+        <tr>
+            <td onClick="location.href='링크입력'">뿌링클 치킨<br/> <p style="font-size: 10px"> 뿌링뿌링 소스가 곁든 시그니처 맛! </p> <br /> 19000원 </td>
+        </tr>
+    </table>
+
+
+
+</BODY>
+</HTML>
