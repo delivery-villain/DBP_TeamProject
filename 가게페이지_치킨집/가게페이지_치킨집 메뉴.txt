@@ -17,7 +17,7 @@
 
     <p style="Padding-left:1000px">임시 여백 띄우기</p>
 
-    <div style="border: 1px solid gold; float: left; width: 35%; padding-left:630px;">
+    <div style="float: left; width: 35%; padding-left:630px;">
         <!--전체 항목(메뉴, 리뷰, 정보)-->
         <table border="1" width="700" height="100" ; style="float:left;">
             <thead>
@@ -55,7 +55,7 @@
         </table>
     </div>
 
-    <div style="border: 1px solid gold; float: left; width: 15%; padding:10px;">
+    <div style="float: left; width: 15%; padding:10px;">
         <!--주문표 메뉴얼-->
         <table border="1" width="250" height="200" style="float:left">
             <tr>
