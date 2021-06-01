@@ -6,8 +6,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Vector;
 
 public class StoreDAO {
+	
 
 	private static Connection con = null;
 	private static PreparedStatement prstmt = null;
@@ -19,12 +21,12 @@ public class StoreDAO {
     
     public static void loadConnect()  {
 	   		try {
-	   		// ¿¬°áÀ» ´Ý´Â´Ù.
+	   		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ý´Â´ï¿½.
 		   		if( stmt != null ) stmt.close();
 		   		if( con != null ) con.close();
    		} catch (SQLException ex ) {};  
    	             
-		    // µå¶óÀÌ¹ö ·Îµù
+		    // ï¿½ï¿½ï¿½ï¿½Ì¹ï¿½ ï¿½Îµï¿½
 		 try {
  	         Class.forName(driver);
 	 
@@ -36,10 +38,10 @@ public class StoreDAO {
 		
 	 	try {
 	         
-	         // ¿¬°áÇÏ±â
+	         // ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
 	         con  = DriverManager.getConnection(URL, "root", "onlyroot");
 	         
-	         System.out.println("\n"+URL+"¿¡ ¿¬°áµÊ");
+	         System.out.println("\n"+URL+"ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½");
 					
 					 
 		} catch( SQLException ex ) 
@@ -54,7 +56,7 @@ public class StoreDAO {
   	   int count;
   	   
   	   try {
-  		   // Statement »ý¼º 
+  		   // Statement ï¿½ï¿½ï¿½ï¿½ 
   		   stmt = con.createStatement();
   		   count = stmt.executeUpdate(sql);  
   		   return count;
@@ -67,15 +69,15 @@ public class StoreDAO {
     
     public static void disconnect()  {
  	   try {
- 		   	// ¿¬°áÀ» ´Ý´Â´Ù.
+ 		   	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ý´Â´ï¿½.
  		   if( stmt != null ) stmt.close();
  		   if( con != null ) con.close();
  	   	} catch (SQLException ex ) {};    
     }
- // ÁÖ¾îÁø select ÁúÀÇ¸¦ ¼öÇàÇÏ¿©  ResultSet ¹ÝÈ¯
+ // ï¿½Ö¾ï¿½ï¿½ï¿½ select ï¿½ï¿½ï¿½Ç¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½  ResultSet ï¿½ï¿½È¯
     public static ResultSet selectQuery(String sql) { 
  	   try {
- 		   // Statement »ý¼º 
+ 		   // Statement ï¿½ï¿½ï¿½ï¿½ 
  		   stmt = con.createStatement();
  		            
  			   
@@ -94,15 +96,14 @@ public class StoreDAO {
 		int updateCnt = 0;
 
 		try {                      
-			// SQL ÁúÀÇ¹®À» ¼öÇàÇÑ´Ù.
-			String sql = "insert into store values (?, ?, ?, ?)";
+			// SQL 
+			String sql = "insert into store (name, userID, phoneNumber)" + " values (?,?,?)";
 			
 			PreparedStatement prStmt = con.prepareStatement(sql);
 
-			prStmt.setInt(1, store.getsno());
-			prStmt.setString(2, store.getName());
-			prStmt.setString(3, userID);
-			prStmt.setString(4, store.getPhoneNumber());
+			prStmt.setString(1, store.getName());
+			prStmt.setString(2, userID);
+			prStmt.setString(3, store.getPhoneNumber());
 			
 			updateCnt = prStmt.executeUpdate();  		
 		} catch( SQLException ex ) {
@@ -114,7 +115,7 @@ public class StoreDAO {
 	}
     public static int setStoreInfo(User user, Store store){
     	loadConnect();
-    	String sql = "select * from store where id = ?";
+    	String sql = "select * from store where userID = ?";
     	
     	try {
     		prstmt = con.prepareStatement(sql);
@@ -137,5 +138,103 @@ public class StoreDAO {
     	}
     	return -2;
     }
+    
+    public static Store getStore(int sno) {
+		try {                      
+			// SQL ï¿½ï¿½ï¿½Ç¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
+			String sql = "select * from store where sno = ?" ;
+			
+			PreparedStatement prStmt = con.prepareStatement(sql);
+
+			prStmt.setInt(1, sno);
+
+			ResultSet rs = prStmt.executeQuery();  
+			if (rs.next())  { 
+				Store store = getStoreFromRS(rs);
+				return store;
+			}			
+		} catch( SQLException ex ) {             
+			System.err.println("\n  ??? SQL exec error in getStore(): " + ex.getMessage() );
+		}
+
+		return null;
+	}
+	
+	  
+	public static Vector<Store> getAllStores()  {
+		Vector<Store> stores = new Vector<Store>();
+
+		Store store;
+
+		ResultSet rs = getAllStoresRS();
+
+		try {
+			while (rs.next())  {
+				store = getStoreFromRS(rs);
+				stores.addElement(store);
+			}
+		} catch( SQLException ex ) 	    {
+			System.err.println("** SQL exec error in getAllStores() : " + ex.getMessage() );
+		}	
+		
+		return stores;	
+	}
+	
+	
+	
+	public static ResultSet getAllStoresRS() {
+		try {                      
+			// SQL ï¿½ï¿½ï¿½Ç¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
+			String sql = "select * from store" ;
+
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);  
+
+			return rs;
+			
+		} catch( SQLException ex ) {             
+			System.err.println("\n  ??? SQL exec error in getAllMenuRS(): " + ex.getMessage() );
+		}
+
+		return null;
+	}
+	
+    
+    public static Store getStoreFromRS(ResultSet rs) {  
+    	Store store = new Store();
+
+		try {
+			if (rs.getRow() ==  0)
+				return null;
+			
+			store.setsno( rs.getInt("sno") );
+			store.setName(rs.getString("name"));// ResultSetï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ getï¿½Ï¿ï¿½ ï¿½Êµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
+			store.setPhoneNumber(rs.getString("phoneNumber"));
+			
+		} catch( SQLException ex ) 	    {
+			System.err.println("\n  ??? SQL exec error in getStoreFromRS(): " + ex.getMessage() );
+		}
+
+		return store;
+	}
+	     
+	public static Vector<Store> getMenusFromRS(ResultSet rs) {  
+		Vector<Store> stores = new Vector<Store>();
+		
+		Store store = new Store();
+
+		try {
+			while(rs.next()) {
+				store = getStoreFromRS(rs);
+			
+				if (store != null)
+					stores.add(store);
+			}	
+		} catch( SQLException ex ) 	    {
+			System.err.println("\n  ??? SQL exec error in getMenusFromRS(): " + ex.getMessage() );
+		}
+
+		return stores;
+	}
     
 }

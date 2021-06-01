@@ -33,7 +33,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>요기요</title>
 <link rel="stylesheet" href="CSS/headerStyle.css">
 </head>
@@ -51,7 +51,7 @@
 
 	<div class= "bnt container">
 	<button type="button" class="btn btn-login ng-binding" onclick = "location.href = 'menuManagement.jsp'">매뉴관리</button>
-	<button type="button" class="btn btn-login ng-binding" onclick = "location.href = 'register.jsp'">주문관리</button>
+	<button type="button" class="btn btn-login ng-binding" onclick = "location.href = 'oderManagement.jsp'">주문관리</button>
 	<button type="button" class="btn btn-login ng-binding" onclick = "location.href = 'register.jsp'">업체등록</button>
 	</div>
 

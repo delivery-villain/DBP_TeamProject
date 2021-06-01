@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"
-	import ="java.io.PrintWriter" %>
+	import ="java.io.PrintWriter"
+	import="java.sql.*, java.util.*, DeliveryVillain.*, java.io.PrintWriter" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,6 +12,7 @@
 <body>
 
 <% 
+ StoreDAO.loadConnect();
 request.setCharacterEncoding("UTF-8");
 	String s;
 if(session.getAttribute("user") == null) {
@@ -88,65 +90,65 @@ if(session.getAttribute("user") == null) {
 			</div>
 			<!-- end ngRepeat: banner in banner_list -->
 			<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
-				<a href="" class="thumbnail" ng-click="select_home_category('all')"><div
+				<a href="store.jsp" class="thumbnail" ng-click="select_home_category('all')"><div
 						class="category-title">전체보기</div> <img src="image/category-01.png"></a>
 			</div>
 			<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
-				<a href="" class="thumbnail"
+				<a href="store.jsp" class="thumbnail"
 					ng-click="select_home_category('1인분주문')"><div
 						class="category-title">1인분 주문</div> <img
 					src="image/category-onedish.png"></a>
 			</div>
 			<div class="col-xs-6 col-sm-4 col-md-3">
-				<a href="" class="thumbnail"
+				<a href="store.jsp" class="thumbnail"
 					ng-click="select_home_category('프랜차이즈')"><div
 						class="category-title">프랜차이즈</div> <img
 					src="image/category-10.png"></a>
 			</div>
 			<div class="col-xs-6 col-sm-4 col-md-3">
-				<a href="" class="thumbnail" ng-click="select_home_category('치킨')"><div
+				<a href="store.jsp" class="thumbnail" ng-click="select_home_category('치킨')"><div
 						class="category-title">치킨</div> <img src="image/category-02.png"></a>
 			</div>
 			<div class="col-xs-6 col-sm-4 col-md-3">
-				<a href="" class="thumbnail" ng-click="select_home_category('피자양식')"><div
+				<a href="store.jsp" class="thumbnail" ng-click="select_home_category('피자양식')"><div
 						class="category-title">피자/양식</div> <img
 					src="image/category-03.png"></a>
 			</div>
 			<div class="col-xs-6 col-sm-4 col-md-3">
-				<a href="" class="thumbnail" ng-click="select_home_category('중식')"><div
+				<a href="store.jsp" class="thumbnail" ng-click="select_home_category('중식')"><div
 						class="category-title">중국집</div> <img src="image/category-04.png"></a>
 			</div>
 			<div class="col-xs-6 col-sm-4 col-md-3">
-				<a href="" class="thumbnail" ng-click="select_home_category('한식')"><div
+				<a href="store.jsp" class="thumbnail" ng-click="select_home_category('한식')"><div
 						class="category-title">한식</div> <img src="image/category-05.png"></a>
 			</div>
 			<div class="col-xs-6 col-sm-4 col-md-3">
-				<a href="" class="thumbnail"
+				<a href="store.jsp" class="thumbnail"
 					ng-click="select_home_category('일식돈까스')"><div
 						class="category-title">일식/돈까스</div> <img
 					src="image/category-06.png"></a>
 			</div>
 			<div class="col-xs-6 col-sm-4 col-md-3">
-				<a href="" class="thumbnail" ng-click="select_home_category('족발보쌈')"><div
+				<a href="store.jsp" class="thumbnail" ng-click="select_home_category('족발보쌈')"><div
 						class="category-title">족발/보쌈</div> <img
 					src="image/category-07.png"></a>
 			</div>
 			<div class="col-xs-6 col-sm-4 col-md-3">
-				<a href="" class="thumbnail" ng-click="select_home_category('야식')"><div
+				<a href="store.jsp" class="thumbnail" ng-click="select_home_category('야식')"><div
 						class="category-title">야식</div> <img src="image/category-08.png"></a>
 			</div>
 			<div class="col-xs-6 col-sm-4 col-md-3">
-				<a href="" class="thumbnail" ng-click="select_home_category('분식')"><div
+				<a href="store.jsp" class="thumbnail" ng-click="select_home_category('분식')"><div
 						class="category-title">분식</div> <img src="image/category-09.png"></a>
 			</div>
 			<div class="col-xs-6 col-sm-4 col-md-3">
-				<a href="" class="thumbnail"
+				<a href="store.jsp" class="thumbnail"
 					ng-click="select_home_category('카페디저트')"><div
 						class="category-title">카페/디저트</div> <img
 					src="image/category-11.png"></a>
 			</div>
 			<div class="col-xs-6 col-sm-4 col-md-3">
-				<a href="" class="thumbnail" ng-click="select_home_category('편의점')"><div
+				<a href="store.jsp" class="thumbnail" ng-click="select_home_category('편의점')"><div
 						class="category-title">편의점/마트</div> <img
 					src="image/category-convenience-store.png"></a>
 			</div>

@@ -13,10 +13,9 @@
 request.setCharacterEncoding("UTF-8");
 String menuName = request.getParameter("storeName");
 String phoneNumber = request.getParameter("StorePhoneNumber");
-int sno = Integer.parseInt(request.getParameter("storeNum"));
 Object object = session.getAttribute("user");
 User user = (User)object;
-Store store = new Store(sno, phoneNumber, menuName);
+Store store = new Store(phoneNumber, menuName);
 session.setAttribute("store", store);
 
 StoreDAO.loadConnect();

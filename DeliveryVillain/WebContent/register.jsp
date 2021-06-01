@@ -17,11 +17,11 @@
 		</h1>
 	</div>
 	</header>
-	<form action = "registerAction.jsp">
+	<form action = "registerAction.jsp" method = "post">
 		<div class="form-group"> 
 			<input type = "text" class="form-control" placeholder ="가게이름" name="storeName" maxlength="20">
 		</div>
-			<input type = "text" class="form-control" placeholder ="가게번호" name="storeNum" maxlength="20">	
+				
 		<div class="form-group"> 
 			<input type = "text" class="form-control" placeholder ="전화번호" name="StorePhoneNumber" maxlength="20">	
 		</div>

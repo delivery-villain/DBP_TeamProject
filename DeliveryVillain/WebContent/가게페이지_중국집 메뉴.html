@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<HTML>
+<HEAD>
+    <title> 가게페이지 - 요기요</title>
+    <style type="text/css">
+        h1 {
+            color: white;
+            Background-color: #f41458; <!--
+            요기요 분홍색 코드값-->
+            <!-- font-family:"여기어때 잘난체"; -->
+        }
+    </style>
+</HEAD>
+<BODY>
+    <h1><img src="요기요 로고 사진.PNG" width="220" height="120" /></h1>
+    <p style="text-align:center">[중국집]_(가게이름예시)</p>
+
+    <p style="Padding-left:1000px">임시 여백 띄우기</p>
+
+    <div style="border: 1px solid gold; float: left; width: 35%; padding-left:630px;">
+        <!--전체 항목(메뉴, 리뷰, 정보)-->
+        <table border="1" width="700" height="100" ; style="float:left;">
+            <thead>
+            <th><input type="button" value="메뉴" onclick="location.href='가게페이지_중국집 메뉴.html'" /></th>
+            <th><input type="button" value="리뷰" onclick="location.href='가게페이지_중국집 리뷰.html'" /></th>
+            <th><input type="button" value="정보" onclick="location.href='가게페이지_중국집 정보.html'" /></th>
+            </thead>
+
+            <!--메뉴 목록-->
+            <tr>
+                <td onClick="location.href='링크입력 필요합니다'" style="font-size: 30px" colspan="3">
+                    짜장면
+                    <img src="짜장면.jpg" style="float: right; width=" 100"; height="100" ; object-fit: cover;" />
+                    <p style="font-size: 10px">주방장의 손수타로 만든 수타 짜장면!</p>
+                    <p style="font-size: 20px">5000원</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td onClick="location.href='링크입력 필요합니다'" style="font-size: 30px" colspan="3">
+                    짬뽕
+                    <img src="짬뽕.jpg" style="float: right; width=" 100"; height="100" object-fit: cover;" />
+                    <p style="font-size: 10px">오늘 갓 잡아온 해물로 만든 짬뽕!</p>
+                    <p style="font-size: 20px">7000원</p>
+                </td>
+            </tr>
+            <tr>
+                <td onClick="location.href='링크입력 필요합니다'" style="font-size: 30px" colspan="3">
+                    탕수육
+                    <img src="탕수육.jpg" style="float: right; width=" 100"; height="100" ; object-fit: cover;" />
+                    <p style="font-size: 10px">겉은 쫄깃한 식감에 속은 부드러운 탕수육!</p>
+                    <p style="font-size: 20px">12000원</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div style="border: 1px solid gold; float: left; width: 15%; padding:10px;">
+        <!--주문표 메뉴얼-->
+        <table border="1" width="250" height="200" style="float:left">
+            <tr>
+                <td height="10">
+                    <p style="font-size: 15px">주문표</p>
+                </td>
+            </tr>
+            <tr>
+                <td height="250">
+                    [주문표에 담긴 메뉴]
+                </td>
+            </tr>
+            <tr>
+                <td height="20">
+                    배달요금 2000원 별도 + [금액]
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: center">
+                    <input type="button" value="주문하기" />            <!-- 주문하기 버튼-->
+                </td>
+            </tr>
+        </table>
+        <br />
+    </div>
+</BODY>
+</HTML>

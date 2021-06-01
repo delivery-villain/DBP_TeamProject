@@ -30,26 +30,33 @@
 	</div>
 	</header>
 
+<center>
 
-<ul>
-
+<table border = "1">
+<th>메뉴</th>
+<th>가격</th>
+<th>가격 수정</th>
 <% 
-
-	
-
 	int length = menus.size();
 	
 	for (int i = 0; i < length; i++) {
 		Menu menu = menus.get(i);
-		out.print("<li> " + menu.getName() + Integer.toString(menu.getPrice()));
+		out.print("<tr>");
+		out.print("<td> " + menu.getName()  + "</td>");
+		out.print("<td> " + Integer.toString(menu.getPrice()) + "</td>");
+		out.print("<td>");
+		out.print("<form method = 'post' action = 'loginAction.jsp'>");
+		out.print("<input type = 'text' class='form-control' placeholder ='' name='storeNum' maxlength='8'>");
+		out.print("</form>");
+		out.print("</td>");
+		out.print("</tr>");
 	}
-
-
+	
 	%>
-
-
-</ul>
+</table>
 	<button type="button" class="btn btn-login ng-binding" onclick = "location.href = 'menu.jsp'">메뉴등록</button>
 	<button type="button" class="btn btn-login ng-binding">저장</button>
+</center>
+
 </body>
 </html>
