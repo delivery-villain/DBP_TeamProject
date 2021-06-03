@@ -1,5 +1,6 @@
-CREATE DATABASE deliveryvillain default CHARACTER SET UTF8;
+CREATE DATABASE Deliveryvillain default CHARACTER SET UTF8;
 
+use DeliveryVillain;
 
 CREATE TABLE menu(
   name varchar(10) DEFAULT NULL, 
