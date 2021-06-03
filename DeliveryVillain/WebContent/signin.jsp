@@ -17,7 +17,7 @@
 	</div>
 	</header>
 	
-	<form action = "signinAction.jsp">
+	<form method = "post" action = "signinAction.jsp">
 		<div class="form-group"> 
 			<input type = "text" class="form-control" placeholder ="ID" name="userID" maxlength="20">
 		</div>

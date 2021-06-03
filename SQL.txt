@@ -1,0 +1,98 @@
+CREATE DATABASE deliveryvillain default CHARACTER SET UTF8;
+
+
+CREATE TABLE menu(
+  name varchar(10) DEFAULT NULL, 
+  price int(11) DEFAULT NULL,        
+  sno int(11) DEFAULT NULL
+  
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+insert into menu values('후라이드 치킨',15000, 2);
+insert into menu values('양념 치킨',16000,2);
+insert into menu values('반반 치킨',16000,2);
+insert into menu values('짜장면',5000,1);
+insert into menu values('짬뽕',7000,1);
+insert into menu values('탕수육',12000,1);
+insert into menu values('불고기 버거',5000,6);
+insert into menu values('새우 버거',5000,6);
+insert into menu values('치킨 버거',6000,6);
+insert into menu values('포테이토 피자',14000,3);
+insert into menu values('페퍼로니 피자',14000,3);
+insert into menu values('한마리 찜닭',23000,8);
+insert into menu values('로제 찜닭',25000, 8);
+insert into menu values('경양식돈가스',9500,4);
+insert into menu values('치즈돈가스',10000,4);
+insert into menu values('모둠보쌈',32000,5);
+insert into menu values('순대곱창 2인',23000,5);
+insert into menu values('엽기떡볶이',16000,7);
+insert into menu values('인절미설빙',14000,9);
+insert into menu values('코카콜라 500ml',2000,2);
+
+CREATE TABLE cart (
+  id int DEFAULT NULL AUTO_INCREMENT, 
+  userID varchar(255) DEFAULT NULL, 
+  address varchar(255) DEFAULT NULL, 
+  orders varchar(255) DEFAULT NULL,
+  store int(11) DEFAULT NULL,
+  menu varchar(255) DEFAULT NULL, 
+  stype varchar(255) DEFAULT NULL,
+  date varchar(255) DEFAULT NULL,  
+
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+insert into cart values(1, "user1", "한신대로25","",1, "짜장면, 탕수육", "토스", "2021-06-03T04:01:17.747+09:00");
+insert into cart values(2,"user2", "한신대로25","빨리 와주세요",6, "불고기 버거", "카드결제", "2021-06-03T04:37:39.267+09:00");
+insert into cart values(3,"user2", "한신대로25", "",7, "엽기떡볶이", "카드결제", "2021-06-03T04:37:39.267+09:00");
+insert into cart values(4,"user3", "광명", "",2, "후라이드 치킨", "카드결제", "2021-06-03T05:05:24.516+09:00");
+
+
+create table store (
+sno int not null AUTO_INCREMENT,
+name varchar(255),
+userID varchar(255),
+phoneNumber varchar(255),
+primary key(sno)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+insert into store values(1,'한신반점','store1','01011112222');
+insert into store values(2,'BHC','store2','01011113333');
+insert into store values(3,'미스터피자','store3','01011114444');
+insert into store values(4,'미스터빠삭','store4','01011115555');
+insert into store values(5,'순대타운','store5','01011115566');
+insert into store values(6,'롯데리아','store6','01011117777');
+insert into store values(7,'엽기떡볶이','store7','01011118888');
+insert into store values(8,'내찜닭','store8','01011119999');
+insert into store values(9,'설빙','store9','01011229999');
+
+
+create table user (
+name varchar(255),
+id varchar(255),
+password varchar(255), 
+phoneNumber varchar(255),
+userType tinyint(1)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+insert into user values('강의정','user1','1234','01011112222',0);
+insert into user values('김철수','user2','1234','01011112222',0);
+insert into user values('진','user3','1234','01011112222',0);
+insert into user values('슈가','user4','1234','01011112222',0);
+insert into user values('제이홉','user5','1234','01011112222',0);
+insert into user values('지민','user6','1234','01011112222',0);
+insert into user values('뷔','user7','1234','01011112222',0);
+insert into user values('정국','user8','1234','01011112222',0);
+insert into user values('민영','user9','1234','01011112222',0);
+insert into user values('유정','store1','1234','01011112222',1);
+insert into user values('은지','store2','1234','01011112222',1);
+insert into user values('유나','store3','1234','01011112222',1);
+insert into user values('방시혁','store4','1234','01011112222',1);
+insert into user values('효정','store5','1234','01011112222',1);
+insert into user values('미미','store6','1234','01011112222',1);
+insert into user values('유아','store7','1234','01011112222',1);
+insert into user values('승희','store8','1234','01011112222',1);
+insert into user values('지호','store9','1234','01011112222',1);
+
+

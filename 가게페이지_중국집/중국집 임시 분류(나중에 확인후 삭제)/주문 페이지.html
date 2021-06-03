@@ -57,6 +57,41 @@
 
 	</style>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<script>
+	function transferOrderList() {
+	 
+		var form = document.createElement("form");
+   
+	   // Move the submit function to another variable
+	   // so that it doesn't get overwritten.
+	   form._submit_function_ = form.submit;
+   
+	   form.setAttribute("method","post");
+	   form.setAttribute("action", "order.jsp");
+		
+	   var list = document.getElementById("dynamic-list").getElementsByTegName('li');
+	   
+	   var noMenu = list.length;
+	   var hiddenField = document.createElement("input");
+	   hiddenField.setAttribute("type", "hidden");
+	   hiddenField.setAttribute("name", "noMenu");
+	   hiddenField.setAttribute("value", noMenu); 
+	   form.appendChild(hiddenField);
+	   
+	   for (var i = 0; i < noMenu; i++) {
+		   hiddenField = document.createElement("input");
+		   hiddenField.setAttribute("type", "hidden");
+		   hiddenField.setAttribute("name", "id"+i);
+		   hiddenField.setAttribute("value", list[i]); 
+		   form.appendChild(hiddenField);
+	   }
+	   
+	   document.body.appendChild(form);
+		   
+	   form.submit();
+   }
+
+</script>
 </head>
 
 <body>

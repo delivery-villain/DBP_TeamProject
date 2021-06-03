@@ -6,6 +6,7 @@ public class Menu {
 	private int price;
 	private int count;
 	private int sno;
+
 	
 	public Menu(String name, int price) {
 		this.name = name;
@@ -22,6 +23,7 @@ public class Menu {
 	}
 	
 	
+
 	public int getSno() {
 		return sno;
 	}

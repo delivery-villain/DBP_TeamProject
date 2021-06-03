@@ -34,6 +34,7 @@
 				response.sendRedirect("indexForSeller.jsp");
 			}
 			else {
+		
 				response.sendRedirect("index.jsp");
 			}
 			

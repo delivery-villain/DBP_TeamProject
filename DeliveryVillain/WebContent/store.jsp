@@ -35,14 +35,21 @@
 	
 	<% 
 	
-	
-	for (int i = 0; i < stores.size() - 1; i +=2) {
+	int count = stores.size();
+	for (int i = 0; i < count - 1; i +=2) {
 		Store store1 =stores.get(i);
 		Store store2 =stores.get(i + 1);
 	out.print("<tr>");
 	out.print("<td style = 'cursor:pointer;' onClick = \"location.href='storeOrder.jsp?&num=" + store1.getsno() + "'\">" + store1.getName()  + "</td>");
 	out.print("<td style = 'cursor:pointer;' onClick = \"location.href='storeOrder.jsp?&num=" + store2.getsno() + "'\">" + store2.getName()  + "</td>");
 	out.print("</tr>");
+	}
+	if(stores.size() % 2 != 0) {
+		Store store = stores.get(count -1);
+		out.print("<tr>");
+		out.print("<td style = 'cursor:pointer;' onClick = \"location.href='storeOrder.jsp?&num=" + store.getsno() + "'\">" + store.getName()  + "</td>");
+		out.print("<td>"); 
+		out.print("</tr>");
 	}
 		%>
 	

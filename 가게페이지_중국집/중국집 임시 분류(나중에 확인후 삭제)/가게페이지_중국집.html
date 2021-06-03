@@ -1,54 +1,117 @@
-<HTML>
-<HEAD>
-    <title> 가게페이지 - 요기요</title>
-    <style type="text/css">
-        h1 {
-            color: white;
-            Background-color: #f41458; <!--
-            요기요 분홍색 코드값-->
-            <!-- font-family:"여기어때 잘난체"; -->
+
+
+<html>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+    <title>요기요</title>
+    <link rel="stylesheet" href="CSS/headerStyle.css">
+    <script type="text/javascript">
+    
+    function addItem(s){
+        var ul = document.getElementById("dynamic-list");
+      var candidate = document.getElementById("candidate");
+      var li = document.createElement("li");
+      li.setAttribute('id',s);
+      li.appendChild(document.createTextNode(s));
+      ul.appendChild(li);
+      
+    }
+    
+    function addPrice(p) {
+        var price = parseInt(p);
+         var totalPrice = document.getElementById("price");
+         totalPrice.innerText =  parseInt(totalPrice.innerHTML) + parseInt(price);
+     }
+     
+    function transferOrderList() {
+         
+         var form = document.createElement("form");
+    
+        // Move the submit function to another variable
+        // so that it doesn't get overwritten.
+        form._submit_function_ = form.submit;
+    
+        form.setAttribute("method","post");
+        form.setAttribute("action", "order.jsp");
+         
+        var list = document.getElementById("dynamic-list").getElementsByTegName('li');
+        
+        var noMenu = list.length;
+        var hiddenField = document.createElement("input");
+        hiddenField.setAttribute("type", "hidden");
+        hiddenField.setAttribute("name", "noMenu");
+        hiddenField.setAttribute("value", noMenu); 
+        form.appendChild(hiddenField);
+        
+        for (var i = 0; i < noMenu; i++) {
+            hiddenField = document.createElement("input");
+            hiddenField.setAttribute("type", "hidden");
+            hiddenField.setAttribute("name", "id"+i);
+            hiddenField.setAttribute("value", list[i]); 
+            form.appendChild(hiddenField);
         }
-    </style>
-</HEAD>
-<BODY>
-    <h1><img src="요기요 로고 사진.PNG" width="220" height="120" /></h1>
-    <p style="text-align:center">[중국집]_(가게이름예시)</p>
-    <table border="1" width="1000" height="100" ; style="margin-left: auto; margin-right: auto;">
-        <thead>
-        <th><input type="button" value="메뉴" /></th>
-        <th><input type="button" value="리뷰" /></th>
-        <th><input type="button" value="정보" /></th>
-        </thead>
-    </table>
-    <br />
-    <table border="2" width="1000" height="100" ; style="margin-left: auto; margin-right: auto;">
-        <tr>
-            <td onClick="location.href='링크입력'" style="font-size: 30px">
-                짜장면
-                <img src="짜장면.jpg" style="float: right; width=" 100"; height="100" ; object-fit: cover;" />
-                <p style="font-size: 10px">주방장의 손수타로 만든 수타 짜장면!</p>
-                <p style="font-size: 20px">5000원</p>
-            </td>
-        </tr>
-        <tr>
-            <td onClick="location.href='링크입력'" style="font-size: 30px">
-                짬뽕
-                <img src="짬뽕.jpg" style="float: right; width="200"; height="100"; object-fit: cover; " />
-                <p style="font-size: 10px">오늘 갓 잡아온 해물로 만든 짬뽕!</p>
-                <p style="font-size: 20px">7000원</p>
-            </td>
-        </tr>
-        <tr>
-            <td onClick="location.href='링크입력'" style="font-size: 30px">
-                탕수육
-                <img src="탕수육.jpg" style="float: right; width="300"; height="100" ; object-fit: cover;" />
-                <p style="font-size: 10px">겉은 쫄깃한 식감에 속은 부드러운 탕수육!</p>
-                <p style="font-size: 20px">12000원</p>
-            </td>
-        </tr>
-    </table>
-
-
-
-</BODY>
-</HTML>
+        
+        document.body.appendChild(form);
+            
+        form.submit();
+    }
+    
+    </script>
+    </head>
+    <body>
+        <header class="header">
+        <div class="container">
+            <h1 class="logo">
+                <img class="logo-img" src="logo.png" alt="logo" />
+            </h1>
+        </div>
+        </header>
+        
+        <p style="font-size: 30px; text-align:center; "><%= store.getName() %></p>
+        <table border="1" width="1000" height="100" ; style="margin-left: auto; margin-right: auto;">
+            <thead>
+            <th><input type="button" value="메뉴" /></th>
+            <th><input type="button" value="리뷰" /></th>
+            <th><input type="button" value="정보" /></th>
+            </thead>
+        </table>
+        <br />
+        <table border="2" width="1000" height="100" ; style="margin-left: auto; margin-right: auto;">
+        
+      
+        
+        </table >
+        
+        <div style="border: 1px solid gold; float: left; width: 15%; padding:10px;">
+            <!--주문표 메뉴얼-->
+            <form method = "post" action = "order.jsp" name= "orderForm">
+            <table border="1" width="250" height="200" style="float:left" >
+                <tr>
+                    <td height="10">
+                        <p style="font-size: 15px">주문표</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="250">
+                        <ul id = "dynamic-list"></ul>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td height="20">
+                        배달요금 2000원 포함: <p id = "price" >2000</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: center">
+                        <input type="button" value="주문하기" onclick="transferOrderList()"/>            <!-- 주문하기 버튼-->
+                    </td>
+                </tr>
+            </table>
+            </form>
+            
+            <br />
+        </div>
+        
+    </body>
+    </html>
