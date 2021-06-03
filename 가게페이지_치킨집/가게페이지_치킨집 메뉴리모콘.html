@@ -12,12 +12,65 @@
     </style>
 </HEAD>
 <BODY>
+skin.html
+<!-- 플로팅 메뉴 -->
+<table id="floating_menu" style="position:fixed; top:30%; left:3%;">
+    	<tr>
+        	<td>
+            	<a id="homeup" href="#top"></a>
+            </td>
+        	<td>
+            	<a id="homedown" href="#footer"></a>
+            </td>          
+        </tr>
+    	<tr>
+        	<td colspan="2" style="text-align: center">
+            	<div style="border-radius: 15px; border: 1px solid #d7d7d7; padding: 10px;">
+                        	<div><object type="application/x-shockwave-flash" data="http://api.v.daum.net/static/recombox3.swf?nurl=http://mile.tistory.com/[##_article_rep_id_##]" width="67" height="80">
+<param name="movie" value="http://api.v.daum.net/static/recombox3.swf?nurl=http://mile.tistory.com/[##_article_rep_id_##]" /></object>
+</div>
+<div>
+<a href="http://www.hanrss.com/add_sub.qst?url=http%3A%2F%2Fmile.tistory.com" title="한RSS에 추가"><img src="http://static.hanrss.com/images/add_to_hanrss7.gif" border="0" width="67px;"/></a>
+</div>
+<!-- AddThis Button BEGIN -->
+<div style="padding: 5px 0 0;">
+<a class="addthis_button_facebook_like" fb:like:layout="box_count"></a>
+<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52e67a1756a71f6a"></script>
+<!-- AddThis Button END -->
+</div>
+</div>
+            </td>
+         </tr>   
+</table>
+
+style.css
+#homeup{
+	display:block;
+	width: 37px;
+	height: 30px;
+	background-image:url(./images/arrow-up.png);		
+	background-repeat:no-repeat;
+}
+#homeup:hover{	
+	opacity: 0.4;
+}
+#homedown{
+	display:block;
+	width: 37px;
+	height: 30px;
+	background-image:url(./images/arrow-down.png);		
+	background-repeat:no-repeat;
+}
+#homedown:hover{	
+	opacity: 0.4;
+}
     <h1><img src="요기요 로고 사진.PNG" width="220" height="120" /></h1>
     <p style="text-align:center">[치킨집]_(가게이름예시)</p>
 
     <p style="Padding-left:1000px">임시 여백 띄우기</p>
 
-    <div style="float: left; width: 35%; padding-left:630px;">
+    <div style="border: 1px solid gold; float: left; width: 35%; padding-left:630px;">
         <!--전체 항목(메뉴, 리뷰, 정보)-->
         <table border="1" width="700" height="100" ; style="float:left;">
             <thead>
@@ -55,7 +108,7 @@
         </table>
     </div>
 
-    <div style="float: left; width: 15%; padding:10px;">
+    <div style="border: 1px solid gold; float: left; width: 15%; padding:10px;">
         <!--주문표 메뉴얼-->
         <table border="1" width="250" height="200" style="float:left">
             <tr>

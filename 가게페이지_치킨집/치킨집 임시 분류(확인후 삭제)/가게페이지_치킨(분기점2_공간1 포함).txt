@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <HTML>
 <HEAD>
     <title> 가게페이지 - 요기요</title>
@@ -17,18 +16,22 @@
 
     <p style="Padding-left:1000px">임시 여백 띄우기</p>
 
-    <div style="float: left; width: 35%; padding-left:630px;">
+    <div style="border: 1px solid gold; float: left; width: 35%; padding-left:630px;">
         <!--전체 항목(메뉴, 리뷰, 정보)-->
         <table border="1" width="700" height="100" ; style="float:left;">
             <thead>
-            <th><input type="button" value="메뉴" onclick="location.href='가게페이지_치킨집 메뉴.html'" /></th>
-            <th><input type="button" value="리뷰" onclick="location.href='가게페이지_치킨집 리뷰.html'" /></th>
-            <th><input type="button" value="정보" onclick="location.href='가게페이지_치킨집 정보.html'" /></th>
+            <th><input type="button" value="메뉴" /></th>
+            <th><input type="button" value="리뷰" /></th>
+            <th><input type="button" value="정보" /></th>
             </thead>
-
+            <tr>
+                <td colspan="3" style="overflow-x:scroll">
+                    <p>공간1</p>
+                </td>
+            </tr>
             <!--메뉴 목록-->
             <tr>
-                <td onClick="location.href='링크입력 필요합니다'" style="font-size: 30px" colspan="3">
+                <td onClick="location.href='링크입력 필요합니다'" style="font-size: 30px">
                     후라이드 치킨
                     <img src="후라이드 치킨.jpg" style="float: right; width=" 100"; height="100" ; object-fit: cover;" />
                     <p style="font-size: 10px">담백한 맛을 느끼게 해주는 맛!</p>
@@ -37,7 +40,7 @@
             </tr>
 
             <tr>
-                <td onClick="location.href='링크입력 필요합니다'" style="font-size: 30px" colspan="3">
+                <td onClick="location.href='링크입력 필요합니다'" style="font-size: 30px">
                     양념 치킨
                     <img src="양념치킨.jpg" style="float: right; width=" 100"; height="100" object-fit: cover;" />
                     <p style="font-size: 10px">달콤한 양념을 즐기는 맛!</p>
@@ -45,7 +48,7 @@
                 </td>
             </tr>
             <tr>
-                <td onClick="location.href='링크입력 필요합니다'" style="font-size: 30px" colspan="3">
+                <td onClick="location.href='링크입력 필요합니다'" style="font-size: 30px">
                     반반 치킨
                     <img src="반반치킨.jpg" style="float: right; width=" 100"; height="100" ; object-fit: cover;" />
                     <p style="font-size: 10px">후라이드 양념 반반으로 고민하지맛!</p>
@@ -55,7 +58,7 @@
         </table>
     </div>
 
-    <div style="float: left; width: 15%; padding:10px;">
+    <div style="border: 1px solid gold; float: left; width: 15%; padding:10px;">
         <!--주문표 메뉴얼-->
         <table border="1" width="250" height="200" style="float:left">
             <tr>
